@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todo</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="./styles/styles.css" type="text/css">
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="./images/logo.svg" alt="logo" id="logo"></a>
+        <input type="search" placeholder="Search for task to do" id="search">
+    </header>
+<nav>
+    <input type="radio" id="All" name="layout" value="All" checked><label for="All">All</label>
+    <input type="radio" id="Important" name="layout" value="Important"><label for="Important">Important</label>
+    <input type="radio" id="Active" name="layout" value="Active"><label for="Active">Active</label>
+    <input type="radio" id="Done" name="layout" value="Done"><label for="Done">Done</label>
+</nav>
+<main>
+<form class="newTask">
+    <label class="newTaskLabel" for="newTaskInput">New task</label>
+    <textarea class="newTaskInput" id="newTaskInput" placeholder="Add your new todo" title=""></textarea>
+    <button id="add" type="submit">ADD</button>
+</form>
+<div class="list">
+    <ul class="todoList"></ul>
+</div>
+</main>
+
+<script src="/scripts/index.js" type="module"></script>
+<script src="/scripts/navigation.js" type="module"></script>
+<!-- <script src="tasks.js" type="module"></script>
+<script src="buttons.js" type="module" ></script> -->
+
+</body>
+</html>

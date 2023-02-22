@@ -1,0 +1,314 @@
+
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    max-width: 1440px;
+    /* max-height: 1024px; */
+    min-height: 800px;
+    font-size: 1rem;
+    /* overflow: hidden; */
+
+}
+
+nav, header, .newTask, .list {
+    width: 55%;
+}
+
+header {
+    padding: 1% 0 0 1%;
+    min-height: 50px;
+}
+
+nav {
+    margin-top: 1%;
+    padding: 1em;
+    position: relative;
+    left: 2.5%;
+    
+}
+
+nav label {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 700;
+    color: #a9abac;
+    cursor: pointer;
+    border-top: 2px solid #e2e2e2;
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-top: 3%;
+    transition: 0.2s;
+}
+
+nav input[name='layout'] {
+    display: none;
+}
+
+nav input[name='layout']:checked + label {
+    border-top: 4px solid #2f80ed;
+    cursor: default;
+    font-weight: 700;
+    color: #53565a;
+    transition: 0.2s;
+}
+
+main {
+    min-height: 800px;
+    background-image: url('../images/taking_notes.png');
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+/* input[type='text'] {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+} */
+
+li:hover {
+    box-shadow: 0px 0px 10px 5px rgba(47, 128, 237, 0.5);
+}
+
+li:hover button {
+    display: inline-block;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 4%;
+    margin-bottom: 10%;
+}
+
+.newTask {
+    margin-top: 1%;
+    padding-left: 3%;
+}
+
+.newTaskLabel {
+    color: #706E6B;
+}
+
+.newTaskInput {
+    width: 100%;
+    height: 8em; /* 109px */
+    border-color: #DDDBDA;
+    border-radius: 4px;
+    margin-top: 1%;
+}
+
+.newTaskInput::placeholder {
+    color: #212529;
+    opacity: 0.4;
+}
+
+.newTaskInput:focus-visible {
+    border-color: #DDDBDA;
+}
+
+.listItem {
+    height: 8em; /* 109px */
+    position: relative;
+    padding: 12px 8px 12px 20px;
+    margin: 3% 0px;
+    background: white;
+    box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    border-radius: 2px;
+    overflow: hidden;
+    word-wrap: break-word;
+    transition: 0.2s;
+}
+
+.itemText {
+    display: inline-block;
+    max-width: 59%;
+}
+
+.star {
+    position: absolute;
+    top: 10%;
+    display: none;
+}
+
+.importantButton {
+    width: 25%;
+    height: 33%;
+    position: absolute;
+    left: 63%;
+    color: white;
+    background-color: #27AE60;
+    border: 0;
+    border-radius: 20px;
+    text-transform: uppercase;
+    display: none;
+    transition: 0.2s;
+}
+
+.importantButton::before{
+    content: 'mark important';
+}
+
+.notImportantButton {
+    width: 25%;
+    height: 33%;
+    position: absolute;
+    left: 63%;
+    color: white;
+    background-color: #BDBDBD;
+    border: 0;
+    border-radius: 20px;
+    text-transform: uppercase;
+    display: none;
+    
+}
+
+.notImportantButton::before{
+    content: 'not important';
+}
+
+.important {
+    font-weight: bold;
+    background-image: url(../images/star.png);
+    background-repeat: no-repeat;
+    background-position: 3% 12%;
+    background-size: 20px;
+    padding-left: 50px;
+}
+
+.doneButton {
+    position: absolute;
+    top: 60%;
+    left: 91%;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background-color: #2F80ED;
+    display: none;
+    background-image: url(../images/tick-2.svg);
+    background-repeat: no-repeat;
+    background-position: 10px;
+}
+
+.undoneButton {
+    background-color: #BDBDBD;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.deleteButton {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    left: 91%;
+    top: 10%;
+    border: 0;
+    border-radius: 50%;
+    display: none;
+    background-image: url(../images/trashcan.png);
+    background-repeat: no-repeat;
+    background-position: 7px;
+}
+
+.invisible {
+    display: none;
+}
+
+#logo {
+    width: 23%;
+    height: 44px;
+    /* min-width: 60px;
+    min-height: 60px; */
+}
+
+#search {
+    float: right;
+    width: 75%;
+    height: 39px;
+    margin-top: 5px;
+    padding-left: 45px;
+    background-color: #F6F6F6;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: inset 1px 1px 5px 0 #ccc;
+
+    background-image: url(../images/loupe.png);
+    background-repeat: no-repeat;
+    background-position: 2% 50%;
+    background-size: 12px;
+    font-size: 1rem;
+    
+}
+
+#search:focus {
+    padding: 0;
+    background: white;
+    transition: 0.2s;
+}
+
+#search:focus::placeholder {
+    color: transparent;
+  }
+
+#add {
+    position: relative;
+    right: -74.5%;
+    width: 25.5%;
+    height: 36px;
+    margin-top: 2%;
+    
+    color: white;
+    background-color: #2F80ED;
+    border: 0;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    nav, header, .newTask, .list, .listActive, .listDone {
+        width: 100%;
+    }
+
+    #logo {
+        display: none;
+    }
+    #search {
+        width: 100%;
+        color: #876543;
+    }
+    nav {display: grid;}
+    nav label {
+        margin-top: 5%;
+        margin-right: 1%;
+        margin-left: 1%;
+    }
+    main {
+        background-size: 0%;
+        margin-right: 2%;
+    }
+    #add {
+        display: none;
+    }
+
+    /*  buttons        */
+
+    .importantButton {
+        left:50%;
+    }
+    .deleteButton {
+        left:80%;
+    }
+    .doneButton {
+        left:80%;
+    }
+}
