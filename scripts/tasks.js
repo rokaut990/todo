@@ -91,7 +91,7 @@ function init() {
   listArray.forEach((element, index) => {
     listArray[index]._important ? document.querySelector(`#listItem${index}`).classList.add('important') : null;
     listArray[index]._important ? document.querySelector(`#listItem${index} .importantButton`).classList.add('notImportantButton'): null;
-    listArray[index]._done ? document.querySelector(`#listItem${index} span`).classList.add('done') : null;
-    //listArray[index]._done ? document.querySelector(`#listItem${index} .doneButton`).classList.add('undoneButton') : null;
+    listArray[index]._done ? document.querySelector(`#listItem${index} span`).classList.add('doneText') : null;
+    listArray[index]._done ? document.querySelector(`#listItem${index} .doneButton`).classList.add('undoneButton') : null;
   });
 }
