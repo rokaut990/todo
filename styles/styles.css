@@ -281,7 +281,7 @@ ul {
         width: 100%;
         color: #876543;
     }
-    nav {display: grid;}
+    nav>form {display: grid;}
     nav>label {
         margin-top: 5%;
         margin-right: 1%;
