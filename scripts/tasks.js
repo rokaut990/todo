@@ -1,5 +1,5 @@
 import { x, listItem } from './class.js'
-console.log(x);
+console.log(`x: ${x}`);
 import {markImportant, markDone, deleteTask} from './buttons.js'
 
 
@@ -8,19 +8,17 @@ const inputBox = document.querySelector('.newTask textarea');
 const textarea = document.getElementById('newTaskInput');
 const todoList = document.querySelector('.todoList');
 
+const getLocalStorageData = localStorage.getItem('New Todo 2');
+let listArray = getLocalStorageData ? JSON.parse(getLocalStorageData) : [];
+  
 
 // tasks 
 
 addBtn.addEventListener('click', addTask);
 function addTask() { 
   const userEnteredValue = inputBox.value; //getting input field value
-  const getLocalStorageData = localStorage.getItem('New Todo 2'); //getting localstorage
-  let listArray = [];
-  if(!!getLocalStorageData) {
-    listArray = JSON.parse(getLocalStorageData);
-  }
-  if(userEnteredValue.trim() != ''){
-    let newItem = new listItem(userEnteredValue);
+  if(!!userEnteredValue.trim()){
+    const newItem = new listItem(userEnteredValue);
     listArray.push(newItem); //pushing new object in array
     localStorage.setItem('New Todo 2', JSON.stringify(listArray)); //transforming js object into a json string
     showTasks(); //calling showTask function
@@ -31,24 +29,21 @@ function addTask() {
 textarea.addEventListener('keypress', handleKeyPress);
 function handleKeyPress(e) {
  var key=e.keyCode || e.which;
-  if (key === 13){ // Клавиша Enter
+  if (key === 13 && !!inputBox.value.trim()){ // Клавиша Enter
     addBtn.click();
   }
 }
 
-export function showTasks(){
+export function showTasks(e){
   const getLocalStorageData = localStorage.getItem('New Todo 2');
   let listArray = [];
-  let id = 0;
-  if(!!getLocalStorageData) {
-    listArray = JSON.parse(getLocalStorageData); 
-  }
+  let idCounter = listArray.length;
+  listArray = getLocalStorageData ? JSON.parse(getLocalStorageData) : [];
   while(todoList.firstChild) {
     todoList.firstChild.remove();
   }
-  listArray.forEach((element, index) => {
-    makeListItem(element, id);
-    id++;
+  listArray.forEach((element) => {
+    makeListItem(element, idCounter++);
   });
   localStorage.setItem('New Todo 2', JSON.stringify(listArray)); //transforming js object into a json string
   inputBox.value = ''; //once task added leave the input field blank
@@ -56,16 +51,15 @@ export function showTasks(){
 }
 
 function makeListItem(element, id) {
-  let newLiTagNew = document.createElement('li');
-  let textEl = document.createElement('span');
-  let importantButton = document.createElement('button');
-  let doneButton = document.createElement('button');
-  let deleteButton = document.createElement('button');
+  const newLiTagNew = document.createElement('li');
+  const textEl = document.createElement('span');
+  const importantButton = document.createElement('button');
+  const doneButton = document.createElement('button');
+  const deleteButton = document.createElement('button');
   element.id = id;
-  console.log(element.id);
 
-  newLiTagNew.setAttribute('id', `listItem${id}`);
-  textEl.textContent = element.value;
+  newLiTagNew.setAttribute('id', `listItem${element.id}`);
+  textEl.textContent = element._value;
   doneButton.setAttribute('type', 'button');
   importantButton.setAttribute('type', 'button');
   deleteButton.setAttribute('type', 'button');
@@ -84,18 +78,20 @@ function makeListItem(element, id) {
   newLiTagNew.append(deleteButton);
 
   importantButton.addEventListener('click', () => markImportant(element.id));
-  doneButton.addEventListener('click', () => markDone(element.id));
-  deleteButton.addEventListener('click', () => {deleteTask(element.id); showTasks()});
+  //newLiTagNew.addEventListener('click', (e) => markDone(element.id));
+  doneButton.addEventListener('click', (e) => markDone(element.id));
+  deleteButton.addEventListener('click', (e) => { deleteTask(element.id); showTasks()});
+
+  // newLiTagNew.addEventListener('click', (e) => {if (e.target.classList.contains('importantButton')) markImportant(element.id);});
+  // newLiTagNew.addEventListener('click', (e) => {if (e.target.classList.contains('doneButton')) markDone(element.id);});
+  // newLiTagNew.addEventListener('click', (e) => {if (e.target.classList.contains('deleteButton')) deleteTask(element.id); showTasks();});
 }
 
 function init() {
-  const getLocalStorageData = localStorage.getItem('New Todo 2');
-  const listArray = JSON.parse(getLocalStorageData);
   listArray.forEach((element, index) => {
-    listArray[index].important ? document.querySelector(`#listItem${index}`).classList.add('important') : null;
-    listArray[index].important ? document.querySelector(`#listItem${index} .importantButton`).classList.add('notImportantButton'): null;
-    listArray[index].done ? document.querySelector(`#listItem${index} span`).classList.add('done') : null;
-    listArray[index].done ? document.querySelector(`#listItem${index} .doneButton`).classList.add('undoneButton') : null;
+    listArray[index]._important ? document.querySelector(`#listItem${index}`).classList.add('important') : null;
+    listArray[index]._important ? document.querySelector(`#listItem${index} .importantButton`).classList.add('notImportantButton'): null;
+    listArray[index]._done ? document.querySelector(`#listItem${index} span`).classList.add('done') : null;
+    //listArray[index]._done ? document.querySelector(`#listItem${index} .doneButton`).classList.add('undoneButton') : null;
   });
 }
-

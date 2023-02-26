@@ -55,7 +55,7 @@ nav input[name='layout']:checked + label {
     cursor: default;
     font-weight: 700;
     color: #53565a;
-    transition: 0.2s;
+    transition: 0.2s, color 0.5s;
 }
 
 main {
@@ -65,19 +65,9 @@ main {
     background-repeat: no-repeat;
 }
 
-/* input[type='text'] {
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    margin: 0;
-} */
-
-li:hover {
-    box-shadow: 0px 0px 10px 5px rgba(47, 128, 237, 0.5);
-}
-
-li:hover button {
+li:hover>button {
     display: inline-block;
+    cursor: pointer;
 }
 
 ul {
@@ -108,10 +98,6 @@ ul {
     opacity: 0.4;
 }
 
-.newTaskInput:focus-visible {
-    border-color: #DDDBDA;
-}
-
 .listItem {
     height: 8em; /* 109px */
     position: relative;
@@ -124,6 +110,10 @@ ul {
     overflow: hidden;
     word-wrap: break-word;
     transition: 0.2s;
+}
+
+.listItem:hover {
+    box-shadow: 0px 0px 10px 5px rgba(47, 128, 237, 0.5);    
 }
 
 .itemText {
@@ -195,14 +185,19 @@ ul {
     background-image: url(../images/tick-2.svg);
     background-repeat: no-repeat;
     background-position: 10px;
+    transition: 0.2s;
 }
 
 .undoneButton {
     background-color: #BDBDBD;
 }
 
-.done {
+.doneText {
     text-decoration: line-through;
+}
+
+.doneItem:hover {
+    box-shadow: 0px 0px 10px 5px rgba(69, 60, 60, 0.5);
 }
 
 .deleteButton {
@@ -287,7 +282,7 @@ ul {
         color: #876543;
     }
     nav {display: grid;}
-    nav label {
+    nav>label {
         margin-top: 5%;
         margin-right: 1%;
         margin-left: 1%;
@@ -296,6 +291,11 @@ ul {
         background-size: 0%;
         margin-right: 2%;
     }
+
+    .importantButton, .doneButton, .deleteButton {
+        display: inline-block;
+    }
+
     #add {
         display: none;
     }

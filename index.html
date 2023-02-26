@@ -8,25 +8,32 @@
     <link rel="stylesheet" href="./styles/styles.css" type="text/css">
 </head>
 <body>
-    <header>
-        <a href="index.html"><img src="./images/logo.svg" alt="logo" id="logo"></a>
-        <input type="search" placeholder="Search for task to do" id="search">
-    </header>
+<header>
+    <a href="index.html"><img src="./images/logo.svg" alt="logo" id="logo"></a>
+    <!-- <form> -->
+    <input type="search" placeholder="Search for task to do" id="search">
+    <!-- <label for="search" style="position: relative; left: 92%;">SEARCH</label> -->
+    <!-- </form> -->
+</header>
 <nav>
-    <input type="radio" id="All" name="layout" value="All" checked><label for="All">All</label>
-    <input type="radio" id="Important" name="layout" value="Important"><label for="Important">Important</label>
-    <input type="radio" id="Active" name="layout" value="Active"><label for="Active">Active</label>
-    <input type="radio" id="Done" name="layout" value="Done"><label for="Done">Done</label>
+    <form>
+        <!-- <fieldset> -->
+        <input type="radio" id="All" name="layout" value="All" checked><label for="All" tabindex="0">All</label>
+        <input type="radio" id="Important" name="layout" value="Important"><label for="Important"tabindex="0">Important</label>
+        <input type="radio" id="Active" name="layout" value="Active"><label for="Active" tabindex="0">Active</label>
+        <input type="radio" id="Done" name="layout" value="Done"><label for="Done" tabindex="0">Done</label>
+        <!-- </fieldset> -->
+    </form>
 </nav>
 <main>
-<form class="newTask">
-    <label class="newTaskLabel" for="newTaskInput">New task</label>
-    <textarea class="newTaskInput" id="newTaskInput" placeholder="Add your new todo" title=""></textarea>
-    <button id="add" type="submit">ADD</button>
-</form>
-<div class="list">
-    <ul class="todoList"></ul>
-</div>
+    <form class="newTask">
+        <label class="newTaskLabel" for="newTaskInput">New task</label>
+        <textarea class="newTaskInput" id="newTaskInput" placeholder="Add your new todo" title=""></textarea>
+        <button id="add" type="submit">ADD</button>
+    </form>
+    <div class="list">
+        <ul class="todoList"></ul>
+    </div>
 </main>
 
 <script src="./scripts/index.js" type="module"></script>

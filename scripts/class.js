@@ -3,31 +3,31 @@
 export let x = 10;
 
 export class listItem {
-    value = '';
-    important = false;
-    done = false;
-    id = 0;
+    _value = '';
+    _important = false;
+    _done = false;
+    _id = 0;
 
     constructor(value, id, important, done) {
-        this.value = value;
-        // this.id = id;
-        // this.important = important;
-        // this.done = done;
+        this._value = value;
+        //this._id = id;
+        // this._important = important;
+        // this._done = done;
     }
 
     get value() {
-        return this.value;
+        return this._value;
     }
 
     set value(value) {
-        this.value = value;
+        this._value = value;
     }
 
     get id() {
-        return this.id;
+        return this._id;
     }
 
     set id(id) {
-        this.id = id;
+        this._id = id;
     }
 }
