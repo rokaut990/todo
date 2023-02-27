@@ -1,16 +1,15 @@
 const searchInput = document.getElementById('search');
-const allTasksButton = document.getElementById('All').nextElementSibling;
-const importantTasksButton = document.getElementById('Important').nextElementSibling;
-const activeTasksButton = document.getElementById('Active').nextElementSibling;
-const doneTasksButton = document.getElementById('Done').nextElementSibling;
-const getLocalStorageData = localStorage.getItem('New Todo 2');
+const allTasksButton = document.getElementById('all').nextElementSibling;
+const importantTasksButton = document.getElementById('important').nextElementSibling;
+const activeTasksButton = document.getElementById('active').nextElementSibling;
+const doneTasksButton = document.getElementById('done').nextElementSibling;
+const getLocalStorageData = localStorage.getItem('taskList');
 const listArray = JSON.parse(getLocalStorageData);
 
 // search 
 searchInput.addEventListener('input', searchTask);
 export function searchTask() {
   listArray.forEach((element, index) => {
-    listArray[index]._value.includes(searchInput.value) ? console.log('contains') : console.log('no');
     listArray[index]._value.includes(searchInput.value) ? document.querySelector(`#listItem${index}`).classList.remove('invisible') :
     document.querySelector(`#listItem${index}`).classList.add('invisible');
   });
