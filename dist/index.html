@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Webpack App</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script defer="defer" src="index_bindle.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="../styles/styles.css" type="text/css">
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="../images/logo.svg" alt="logo" id="logo"></a>
+        <!-- <form> -->
+        <input type="search" placeholder="Search for task to do" id="search">
+        <!-- <label for="search" style="position: relative; left: 92%;">SEARCH</label> -->
+        <!-- </form> -->
+    </header>
+    <nav>
+        <form>
+            <!-- <fieldset> -->
+            <input type="radio" id="all" name="layout" value="All" checked><label for="all" tabindex="0">All</label>
+            <input type="radio" id="important" name="layout" value="Important"><label for="important"tabindex="0">Important</label>
+            <input type="radio" id="active" name="layout" value="Active"><label for="active" tabindex="0">Active</label>
+            <input type="radio" id="done" name="layout" value="Done"><label for="done" tabindex="0">Done</label>
+            <!-- </fieldset> -->
+        </form>
+    </nav>
+    <main>
+        <form class="newTask">
+            <label class="newTaskLabel" for="newTaskInput">New task</label>
+            <textarea class="newTaskInput" id="newTaskInput" placeholder="Add your new todo" title=""></textarea>
+            <button id="add" type="submit">ADD</button>
+        </form>
+        <div class="list">
+            <ul class="todoList"></ul>
+        </div>
+    </main>
+    
+</body>
+</html>
